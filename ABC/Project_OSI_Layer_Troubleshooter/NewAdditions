@@ -1,0 +1,5 @@
+Add the option to do complete test layer by layer
+Add a notification after every step is completed
+Add Logging options 
+Add User Interface where they can select from the option (using flask)
+Notifications: Send alerts via Telegram, Slack, or email for failed tests. 
