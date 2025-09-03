@@ -1,61 +1,90 @@
-🔹 EC2 Instance Networking
+# 👩‍💻 About Me
 
-ping → check connectivity between instances or to the internet.
+Hi, I’m **Ayushi Singh** – a **DevOps Engineer** and **Keynote Tech Speaker**.
 
-curl / wget → test HTTP(S) endpoints from EC2.
+I started my career as a **Project Manager** with a strong tech background, and over time, I transitioned fully into **Cloud, AI, and DevOps**. Alongside my technical work, I regularly speak at industry events on **Digital Transformation, Cloud, AI, and DevOps**, helping businesses and individuals understand how technology is reshaping the world.
 
-traceroute / mtr → see path from EC2 to destination (helps with route table issues).
+I’m passionate about **building real-world projects**, sharing knowledge, and making tech simple and practical.  
+I’m also **open to collaborations and project partnerships** – so feel free to connect!
 
-nc (netcat) → test if specific ports are reachable (e.g., DB port, app port).
+---
 
-ss / netstat → list active connections, listening ports.
+# 🚀 My 100-Days DevOps Journey
 
-ip addr / ip route → check private/public IPs and routing within the instance.
+I’ve set myself on a **100-days journey** to master and share DevOps in a structured, hands-on way.
 
-arp / ip neigh → local neighbor resolution (rare but can help for ENI debugging).
+**My approach:**
 
-🔹 VPC / Networking Debugging
+1. **Checklist of Essentials** – covering only what every DevOps engineer *must know*.  
+2. **Hands-on Projects** – learning by building real-world use cases.  
+3. **Sharing Everywhere** – so others can follow and learn with me.
 
-AWS CLI commands:
+---
 
-aws ec2 describe-vpcs → list VPCs
+## 📌 Roadmap
 
-aws ec2 describe-subnets → list subnets & CIDRs
+Here’s how I’m breaking it down over 100 days:
 
-aws ec2 describe-route-tables → check routing rules
+### Phase 1 – Foundations
+- Networking for DevOps  
+- Linux for DevOps  
+- Git & GitHub  
 
-aws ec2 describe-security-groups → view security group rules
+### Phase 2 – Core Tools
+- Docker  
+- Jenkins & CI/CD  
+- Kubernetes  
 
-aws ec2 describe-network-interfaces → ENI details, private IPs, MACs
+### Phase 3 – Automation & Cloud
+- Ansible  
+- Monitoring in DevOps  
+- Terraform  
+- AWS & Cloud Basics  
 
-aws ec2 describe-instances → verify IP assignment and network status
+👉 After this, I’ll move into **real-world projects**, integrating all tools and practices together.
 
-VPC Flow Logs → check allowed/blocked traffic inside your VPC.
+---
 
-🔹 DNS & Endpoint Testing
+## 🛠️ How I’m Documenting This Journey
 
-dig / nslookup → test Route53 records.
+- **YouTube** → Tutorials, walkthroughs, and shorts 🎥  
+- **GitHub** → My projects & hands-on code 💻  
+- **Notion** → Structured notes & checklists 📒  
+- **Website** → A central hub where everything connects 🌐  
+- **Social Media** → Daily/weekly updates, tips, and stories 📲  
 
-curl -v → test connectivity to API Gateway, ELB, or other endpoints.
+---
 
-ping → test connectivity (if ICMP allowed by SG/NACL).
+## 🌍 Why This Matters
 
-🔹 Security & Firewall
+We’re living in the era of **Digital Transformation**.  
+Businesses are evolving rapidly with **Cloud, AI, and DevOps** at the center of change.  
+My goal is to **learn, share, and contribute** to this transformation by creating resources and projects that others can benefit from.
 
-iptables -L → instance-level firewall rules (rare in AWS, usually SG/NACL handles it).
+---
 
-nmap → scan instance ports to verify open/closed ports (if allowed by SG).
+## 🎯 Goal
 
-🔹 Load Balancers & Public Services
+By the end of these **100 days**, I’ll have:
 
-curl / wget → test ELB endpoints.
+- A solid foundation across **all core DevOps practices**  
+- A **portfolio of real-world projects**  
+- A structured **learning + teaching roadmap** others can follow
 
-dig → verify DNS for ALB/CNAME records.
+---
 
-🔹 Cloud-Native Debugging Tools
+## 🌐 Follow & Connect
 
-aws cloudwatch get-metric-data → monitor network traffic metrics.
+- GitHub: [Your GitHub Link]  
+- YouTube: [Your YouTube Link]  
+- Website: [Your Website Link]  
+- LinkedIn: [Your LinkedIn Link]  
+- Email: info@strainio.com  
+- WhatsApp Community: [Join Here](YOUR_WHATSAPP_INVITE_LINK)  
 
-aws logs tail <log-group> → check VPC flow logs or app logs in real-time.
+📩 **Open for collaborations, projects, and knowledge-sharing.**
 
-aws ec2 get-console-output → for boot/network errors on instance launch.
+---
+
+✨ Let’s learn, build, and transform together.
+
