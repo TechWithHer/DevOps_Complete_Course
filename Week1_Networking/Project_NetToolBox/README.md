@@ -101,4 +101,5 @@ This project is licensed under the MIT License – feel free to use and adapt.
 ## 👩‍💻 Author
 
 **Ayushi Singh**  
-Tech Content Creator | DevOps Enthusiast | Founder @ Strenure
+Tech Content Creator | DevOps Enginer | Founder @ Strenure
+
