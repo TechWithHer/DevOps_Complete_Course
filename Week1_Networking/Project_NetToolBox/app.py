@@ -1,22 +1,22 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 import subprocess
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return """
-    <h1>My MVP Web App</h1>
-    <a href='/run/test1'>Run Test 1</a><br>
-    <a href='/run/test2'>Run Test 2</a><br>
-    <a href='/run/test3'>Run Test 3</a><br>
-    """
+    # Pass test names to the HTML page
+    tests = ["test1", "test2", "test3"]
+    return render_template("index.html", tests=tests)
 
 @app.route("/run/<testname>")
 def run_test(testname):
-    result = subprocess.getoutput(f"python3 tests/{testname}.py")
-    return f"<pre>{result}</pre>"
+    try:
+        result = subprocess.getoutput(f"python3 tests/{testname}.py")
+        return f"<h2>Result of {testname}</h2><pre>{result}</pre><br><a href='/'>⬅ Back</a>"
+    except Exception as e:
+        return f"<h2>Error running {testname}</h2><pre>{str(e)}</pre><br><a href='/'>⬅ Back</a>"
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=5000, debug=True)
 
