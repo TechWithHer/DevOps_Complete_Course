@@ -8,15 +8,14 @@
 <body>
     <div class="container">
         <h1>🚀 My MVP Dashboard</h1>
-        <p>Select a test to run:</p>
+        <p>Choose a network test to explore:</p>
         <div class="button-grid">
             {% for test in tests %}
                 <a class="btn" href="{{ url_for('run_test', testname=test) }}">
-                    Run {{ test|capitalize }}
+                    🔍 Run {{ test|capitalize }}
                 </a>
             {% endfor %}
         </div>
     </div>
 </body>
 </html>
-
