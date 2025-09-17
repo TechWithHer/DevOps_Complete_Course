@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     # Pass test names to the HTML page
-    tests = ["test1", "test2", "test3"]
+    tests = ["Ping Test", "DNS Test", "HTTP Test"]
     return render_template("index.html", tests=tests)
 
 @app.route("/run/<testname>")
