@@ -1,105 +1,92 @@
-# 🛠️ Project_NetToolBox
+NetToolbox 🛠️
 
-A **Network Troubleshooting & DevOps Toolkit** built in Python, designed to provide practical, hands-on utilities for diagnosing and resolving network issues.  
-This project is also a learning journey into the **OSI & TCP/IP models**, bridging theoretical knowledge with real-world troubleshooting.
+A lightweight Python toolkit for network troubleshooting and learning.
 
----
+📌 Overview
 
-## 📌 Features
+NetToolbox is a command-line toolkit built in Python to help troubleshoot and understand networks.
+It is designed for learners, DevOps engineers, and system admins who want to quickly test connectivity, resolve network issues, and explore how different protocols work — all from a single interactive tool.
 
-- **Layered Approach** – Tools mapped to OSI & TCP/IP layers for structured learning  
-- **Essential DevOps CLI Wrappers** – ping, traceroute, netstat, curl, and more  
-- **Connectivity Checks** – Host reachability, DNS resolution, and port scanning  
-- **Interactive CLI** – Simple menu-driven interface for quick use  
-- **Extendable** – Easy to add new troubleshooting modules  
+✨ Features
 
----
+🔍 Ping Test – Verify connectivity to a host.
 
-## 📚 Learning Objectives
+🌐 DNS Lookup – Resolve domain names to IP addresses.
 
-- Gain a **practical understanding** of OSI & TCP/IP layers  
-- Use Python to replicate and extend standard networking commands  
-- Build a **real-world DevOps utility** while learning networking fundamentals  
-- Practice **systematic troubleshooting** for everyday issues  
+📡 Port Scanner – Check open ports on a host.
 
----
+🛰️ IP Info – Get your public IP and local network info.
 
-## 🏗️ Project Structure
+📜 Traceroute (optional) – Trace the route packets take (can be extended).
 
-Project_NetToolBox/
-│── nettoolbox.py # Main CLI script
-│── modules/ # Individual feature modules
-│ ├── layer1_physical.py
-│ ├── layer2_datalink.py
-│ ├── layer3_network.py
-│ ├── layer4_transport.py
-│ └── layer7_application.py
-│── utils/ # Helper functions
-│── README.md # Documentation
+📖 Educational Mode – Understand how these commands map to OSI/TCP layers.
+
+🛠️ Installation
+1. Clone the repository
+git clone https://github.com/your-username/NetToolbox.git
+cd NetToolbox
+
+2. Create a virtual environment
+python3 -m venv venv
+source venv/bin/activate   # Mac/Linux
+venv\Scripts\activate      # Windows
+
+3. Install dependencies
+pip install -r requirements.txt
+
+🚀 Usage
+
+Run the tool with:
+
+python main.py
 
 
----
+You’ll see an interactive menu like:
 
-## ⚙️ Installation
+1. Ping a host
+2. DNS lookup
+3. Port scan
+4. Get IP info
+5. Exit
 
-1. Clone the repository  
-   `git clone https://github.com/your-username/Project_NetToolBox.git`
 
-2. Navigate to project directory  
-   `cd Project_NetToolBox`
+Example:
 
-3. (Optional) Create virtual environment  
-   - Linux/Mac: `python3 -m venv venv && source venv/bin/activate`  
-   - Windows: `python -m venv venv && venv\Scripts\activate`
+Enter choice: 1
+Enter host: google.com
+Pinging google.com...
+Reply from 142.250.72.14: time=20ms
 
-4. Install dependencies  
-   `pip install -r requirements.txt`
+📂 Project Structure
+NetToolbox/
+│── nettoolbox/        # Core Python package
+│   ├── ping.py        # Ping functionality
+│   ├── dns_lookup.py  # DNS resolution
+│   ├── port_scan.py   # Port scanner
+│   ├── ip_info.py     # Get IP info
+│   └── __init__.py
+│
+│── main.py            # Entry point script
+│── requirements.txt   # Dependencies
+│── README.md          # Documentation
 
----
+🧭 Roadmap
 
-## 🚀 Usage
+ Add traceroute functionality
 
-Run the toolkit with:
+ Add monitoring alerts (email/Telegram)
 
-`python nettoolbox.py`
+ Build simple web dashboard for results
 
-You’ll see an **interactive menu** to choose from different troubleshooting tools.
+ Package as a PyPI module
 
----
+🤝 Contributing
 
-## 🧩 Example Tools
+Contributions, issues, and feature requests are welcome!
+Feel free to open an issue
+ or submit a PR.
 
-- **Physical/Data Link Layer**: Interface status, MAC address lookup  
-- **Network Layer**: Ping, traceroute, DNS resolution  
-- **Transport Layer**: Port scanning, socket tests  
-- **Application Layer**: HTTP requests, API checks  
+📜 License
 
----
-
-## 📈 Roadmap
-
-- [ ] Add logging and reporting features  
-- [ ] Expand into **security auditing** modules  
-- [ ] Host on **AWS EC2** for real-world use  
-- [ ] Build a simple **web dashboard** interface  
-
----
-
-## 🤝 Contributing
-
-Contributions, ideas, and suggestions are welcome!  
-Fork the repo and submit a PR, or open an issue for discussion.
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License – feel free to use and adapt.
-
----
-
-## 👩‍💻 Author
-
-**Ayushi Singh**  
-Tech Content Creator | DevOps Enginer | Founder @ Strenure
-
+This project is licensed under the MIT License – see the LICENSE
+ file for details.
