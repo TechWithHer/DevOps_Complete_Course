@@ -2,100 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>NetToolbox Web</title>
-    <style>
-        body {
-            background-color: #000;
-            color: #00ff99;
-            font-family: "Courier New", monospace;
-            text-align: center;
-            margin: 0;
-            padding: 40px;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            text-shadow: 0 0 15px #00ff99, 0 0 30px #00cc88;
-        }
-
-        p {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-
-        label {
-            font-size: 1.2em;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        input[type="text"] {
-            padding: 12px;
-            border: 2px solid #00ff99;
-            border-radius: 8px;
-            background: #111;
-            color: #00ff99;
-            font-size: 1em;
-            outline: none;
-            width: 250px;
-            box-shadow: 0 0 10px #00ff99;
-            transition: all 0.3s ease-in-out;
-        }
-
-        input[type="text"]:focus {
-            box-shadow: 0 0 20px #00ff99, 0 0 40px #00cc88;
-        }
-
-        button {
-            background: transparent;
-            border: 2px solid #00ff99;
-            color: #00ff99;
-            font-size: 1em;
-            padding: 12px 24px;
-            margin: 10px;
-            border-radius: 8px;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-weight: bold;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 0 8px #00ff99;
-        }
-
-        button:hover {
-            background: #00ff99;
-            color: #000;
-            box-shadow: 0 0 20px #00ff99, 0 0 40px #00cc88;
-            transform: scale(1.05);
-        }
-
-        form {
-            margin-top: 20px;
-        }
-
-        .footer {
-            margin-top: 40px;
-            font-size: 0.9em;
-            color: #00cc88;
-            opacity: 0.8;
-        }
-    </style>
+    <title>NetToolBox Web</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
 </head>
 <body>
-    <h1>🚀 NetToolbox Web</h1>
-    <p>Enter an IP or Domain and run a test:</p>
+    <div class="container">
+        <h1>NetToolBox</h1>
 
-    <form method="get" action="">
-        <label for="target">Target:</label>
-        <input type="text" id="target" name="target" placeholder="example.com" required>
-        <br><br>
+        <!-- Input for target -->
+        <input type="text" id="target" placeholder="Enter Domain / IP / URL" />
 
-        {% for key, (label, _) in tests.items() %}
-            <button type="submit" formaction="{{ url_for('run_test', testname=key) }}">
-                {{ label }}
-            </button>
-        {% endfor %}
-    </form>
+        <!-- Test Buttons -->
+        <div class="buttons">
+            <h2>Cloud & DevOps</h2>
+            <button onclick="runTest('cicd')">CI/CD Test</button>
+            <button onclick="runTest('kubernetes')">Kubernetes Test</button>
+            <button onclick="runTest('s3')">S3 Test</button>
 
-    <div class="footer">NetToolbox © 2025 — Interactive CLI meets Web</div>
+            <h2>Connectivity</h2>
+            <button onclick="runTest('ping')">Ping</button>
+            <button onclick="runTest('tcp_udp_ping')">TCP/UDP Ping</button>
+            <button onclick="runTest('traceroute')">Traceroute</button>
+
+            <h2>DNS</h2>
+            <button onclick="runTest('cname')">CNAME Lookup</button>
+            <button onclick="runTest('dns_lookup')">DNS Lookup</button>
+            <button onclick="runTest('mx')">MX Records</button>
+
+            <h2>Security</h2>
+            <button onclick="runTest('firewall')">Firewall Test</button>
+            <button onclick="runTest('port_scan')">Port Scan</button>
+            <button onclick="runTest('weak_cipher')">Weak Cipher Test</button>
+
+            <h2>Web Services</h2>
+            <button onclick="runTest('api')">API Test</button>
+            <button onclick="runTest('http')">HTTP Test</button>
+            <button onclick="runTest('ssl')">SSL Check</button>
+        </div>
+
+        <!-- Result Display -->
+        <div id="result"></div>
+    </div>
+
+    <script>
+        async function runTest(testName) {
+            const target = document.getElementById("target").value;
+            if (!target) {
+                alert("Please enter a domain/IP/URL first!");
+                return;
+            }
+
+            const response = await fetch("/run_test", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ test: testName, target: target })
+            });
+
+            const data = await response.json();
+            const resultDiv = document.getElementById("result");
+
+            if (data.result) {
+                resultDiv.innerHTML = `<p><strong>${testName}:</strong> ${data.result}</p>`;
+            } else {
+                resultDiv.innerHTML = `<p style="color:red;"><strong>Error:</strong> ${data.error}</p>`;
+            }
+        }
+    </script>
 </body>
 </html>
