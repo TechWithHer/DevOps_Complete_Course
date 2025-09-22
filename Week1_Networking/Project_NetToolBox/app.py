@@ -15,7 +15,6 @@ TEST_FUNCTIONS = {
     "s3": s3_test.test_s3,
     # Connectivity
     "ping": ping_test.test_ping,
-    "tcp_udp_ping": tcp_udp_ping_test.test_tcp_udp_ping,
     "traceroute": traceroute_test.test_traceroute,
     # DNS
     "cname": cname_test.test_cname,
