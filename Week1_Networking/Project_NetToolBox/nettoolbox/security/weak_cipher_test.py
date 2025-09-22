@@ -39,3 +39,9 @@ def test_weak_cipher(host: str, port: int = 443, timeout: float = 4.0) -> dict:
             "duration": time.time() - start,
             "timestamp": datetime.utcnow().isoformat() + "Z"
         }
+# in weak_cipher_test.py
+def test_weak_cipher(target):
+    # Example dummy logic
+    result = {"status": "insecure", "details": ["TLSv1.0 enabled"]}
+    # Convert dict → readable string
+    return f"Weak Cipher Test for {target}: {result['status']} ({', '.join(result['details'])})"
