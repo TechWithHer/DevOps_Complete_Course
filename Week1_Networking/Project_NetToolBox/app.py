@@ -23,7 +23,7 @@ def index():
         elif category == "connectivity":
             tests = [
                 ping_test.test_ping(target),
-                tcp_udp_ping_test.test_tcp_udp_ping(target),
+                tcp_udp_ping_test.test_tcp_ping(target),
                 traceroute_test.test_traceroute(target),
             ]
         elif category == "dns":
