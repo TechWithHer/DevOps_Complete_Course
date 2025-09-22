@@ -1,104 +1,52 @@
-#!/usr/bin/env python3
-"""
-Main entry point for NetToolbox Project
-"""
 import sys
-import subprocess
-import importlib
-import os
-import logging
-import json
+from nettoolbox.cloud_devops import cicd_test, kubernetes_test, s3_test
+from nettoolbox.connectivity import ping_test, tcp_udp_ping_test, traceroute_test
+from nettoolbox.dns import cname_test, dns_lookup_test, mx_test
+from nettoolbox.security import firewall_test, port_scan_test, weak_cipher_test
+from nettoolbox.web_services import api_test, http_test, ssl_test
 
-# ===== Logging Setup =====
-LOG_DIR = "logs"
-LOG_FILE = os.path.join(LOG_DIR, "nettoolbox.log")
-os.makedirs(LOG_DIR, exist_ok=True)
+def main():
+    print("=== NetToolBox CLI ===")
+    print("Choose a test category:")
+    print("1. Cloud & DevOps")
+    print("2. Connectivity")
+    print("3. DNS")
+    print("4. Security")
+    print("5. Web Services")
+    choice = input("Enter choice: ")
 
-logging.basicConfig(
-    filename=LOG_FILE,
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s"
-)
+    if choice == "1":
+        service = input("Enter service name (domain/bucket/cluster): ")
+        print(cicd_test.test_cicd(service))
+        print(kubernetes_test.test_kubernetes(service))
+        print(s3_test.test_s3(service))
 
-# ===== Dependencies =====
-PYTHON_PACKAGES = [
-    ("requests", "requests"),
-    ("speedtest_cli", "speedtest-cli")
-]
+    elif choice == "2":
+        target = input("Enter host/IP: ")
+        print(ping_test.test_ping(target))
+        print(tcp_udp_ping_test.test_tcp_udp_ping(target))
+        print(traceroute_test.test_traceroute(target))
 
-def install_package(module_name, pip_name):
-    """Install package if not already installed."""
-    try:
-        importlib.import_module(module_name)
-        print(f"✅ '{module_name}' is already installed.")
-    except ImportError:
-        print(f"⚠️ '{module_name}' not found. Installing via pip...")
-        subprocess.check_call([sys.executable, "-m", "pip", "install", pip_name])
-        print(f"✅ '{module_name}' installed successfully.")
+    elif choice == "3":
+        domain = input("Enter domain: ")
+        print(cname_test.test_cname(domain))
+        print(dns_lookup_test.test_dns_lookup(domain))
+        print(mx_test.test_mx(domain))
 
-def check_dependencies():
-    """Check and install all Python dependencies."""
-    for module_name, pip_name in PYTHON_PACKAGES:
-        install_package(module_name, pip_name)
+    elif choice == "4":
+        host = input("Enter host/IP: ")
+        print(firewall_test.test_firewall(host))
+        print(port_scan_test.test_port_scan(host))
+        print(weak_cipher_test.test_weak_cipher(host))
 
-# ===== Import Test Modules from NetToolbox =====
-def import_test_modules():
-    try:
-        from nettoolbox import dns_test, http_test, ping_test
-        return dns_test, http_test, ping_test
-    except ImportError as e:
-        print(f"❌ Error importing NetToolbox modules: {e}")
-        sys.exit(1)
+    elif choice == "5":
+        url = input("Enter full URL (https://...): ")
+        print(api_test.test_api(url))
+        print(http_test.test_http(url))
+        print(ssl_test.test_ssl(url))
 
-# ===== Main Menu =====
-def main_menu(target, dns_test, http_test, ping_test):
-    while True:
-        print("\n--- NetToolbox Menu ---")
-        print("1. Ping Test")
-        print("2. DNS Test")
-        print("3. HTTP Test")
-        print("4. Run All Tests")
-        print("5. Exit")
+    else:
+        print("Invalid choice.")
 
-        choice = input("Select an option (1-5): ").strip()
-
-        if choice == "1":
-            result = ping_test.run(target)
-        elif choice == "2":
-            result = dns_test.run(target)
-        elif choice == "3":
-            result = http_test.run(target)
-        elif choice == "4":
-            for test in [ping_test.run, dns_test.run, http_test.run]:
-                res = test(target)
-                print(res)
-                logging.info(res)
-            continue
-        elif choice == "5":
-            print("👋 Exiting NetToolbox.")
-            sys.exit(0)
-        else:
-            print("⚠️ Invalid choice, try again.")
-            continue
-
-        print(json.dumps(result, indent=4))
-        logging.info(result)
-
-# ===== Entry Point =====
 if __name__ == "__main__":
-    print("🚀 Starting NetToolbox Project...")
-
-    # Step 1: Check dependencies
-    check_dependencies()
-
-    # Step 2: Import modules
-    dns_test, http_test, ping_test = import_test_modules()
-
-    # Step 3: Get target IP/domain
-    target = input("Enter IP or Domain to test: ").strip()
-    if not target:
-        print("❌ No target provided. Exiting.")
-        sys.exit(1)
-
-    # Step 4: Run main menu
-    main_menu(target, dns_test, http_test, ping_test)
+    main()

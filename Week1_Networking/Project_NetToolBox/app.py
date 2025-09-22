@@ -1,61 +1,51 @@
 from flask import Flask, render_template, request
-import logging
-import os
-import json
+from nettoolbox.cloud_devops import cicd_test, kubernetes_test, s3_test
+from nettoolbox.connectivity import ping_test, tcp_udp_ping_test, traceroute_test
+from nettoolbox.dns import cname_test, dns_lookup_test, mx_test
+from nettoolbox.security import firewall_test, port_scan_test, weak_cipher_test
+from nettoolbox.web_services import api_test, http_test, ssl_test
 
-# ===== Logging Setup (same as main.py) =====
-LOG_DIR = "logs"
-LOG_FILE = os.path.join(LOG_DIR, "nettoolbox.log")
-os.makedirs(LOG_DIR, exist_ok=True)
-
-logging.basicConfig(
-    filename=LOG_FILE,
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s"
-)
-
-# ===== Import NetToolbox test modules =====
-try:
-    from nettoolbox import dns_test, http_test, ping_test
-except ImportError as e:
-    raise ImportError(f"❌ Could not import NetToolbox modules: {e}")
-
-# ===== Flask App =====
 app = Flask(__name__)
 
-# Available tests (same as CLI menu)
-TESTS = {
-    "ping": ("Ping Test", ping_test.run),
-    "dns": ("DNS Test", dns_test.run),
-    "http": ("HTTP Test", http_test.run),
-}
+@app.route("/", methods=["GET", "POST"])
+def index():
+    result = None
+    if request.method == "POST":
+        category = request.form.get("category")
+        target = request.form.get("target")
 
-@app.route("/")
-def home():
-    """Home page with test list and input form."""
-    return render_template("index.html", tests=TESTS)
+        if category == "cloud":
+            result = [
+                cicd_test.test_cicd(target),
+                kubernetes_test.test_kubernetes(target),
+                s3_test.test_s3(target),
+            ]
+        elif category == "connectivity":
+            result = [
+                ping_test.test_ping(target),
+                tcp_udp_ping_test.test_tcp_udp_ping(target),
+                traceroute_test.test_traceroute(target),
+            ]
+        elif category == "dns":
+            result = [
+                cname_test.test_cname(target),
+                dns_lookup_test.test_dns_lookup(target),
+                mx_test.test_mx(target),
+            ]
+        elif category == "security":
+            result = [
+                firewall_test.test_firewall(target),
+                port_scan_test.test_port_scan(target),
+                weak_cipher_test.test_weak_cipher(target),
+            ]
+        elif category == "web":
+            result = [
+                api_test.test_api(target),
+                http_test.test_http(target),
+                ssl_test.test_ssl(target),
+            ]
 
-@app.route("/run/<testname>", methods=["GET"])
-def run_test(testname):
-    """Run selected test on a user-provided target."""
-    target = request.args.get("target", "").strip()
-    if not target:
-        return f"<h2>❌ No target provided</h2><a href='/'>⬅ Back</a>"
-
-    if testname not in TESTS:
-        return f"<h2>❌ Invalid test '{testname}'</h2><a href='/'>⬅ Back</a>"
-
-    test_label, test_func = TESTS[testname]
-    try:
-        result = test_func(target)
-        logging.info(result)
-        return f"""
-        <h2>Result of {test_label} on {target}</h2>
-        <pre>{json.dumps(result, indent=4)}</pre>
-        <br><a href='/'>⬅ Back</a>
-        """
-    except Exception as e:
-        return f"<h2>❌ Error running {test_label}</h2><pre>{str(e)}</pre><br><a href='/'>⬅ Back</a>"
+    return render_template("index.html", result=result)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(debug=True)

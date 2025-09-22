@@ -1,19 +1,12 @@
-#!/bin/bash
-# Install dependencies for NetToolBox Project
+# Networking
+dnspython
+requests
 
-echo "🔹 Updating system packages..."
-sudo apt-get update -y || sudo yum update -y
+# Security
+cryptography
 
-echo "🔹 Installing Python3 and pip..."
-if ! command -v python3 &> /dev/null
-then
-    sudo apt-get install -y python3 python3-pip || sudo yum install -y python3 python3-pip
-else
-    echo "✅ Python3 already installed."
-fi
+# Cloud
+boto3
 
-echo "🔹 Installing required Python libraries..."
-pip3 install -r requirements.txt
-
-echo "✅ Dependencies installed successfully!"
-
+# CLI / Web
+flask

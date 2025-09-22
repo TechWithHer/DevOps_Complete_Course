@@ -1,43 +1,33 @@
-# NetToolBox/http_check.py
+# nettoolbox/web_services/http_test.py
 import requests
 import time
+from datetime import datetime
+from urllib.parse import urlparse
 
-def run(target):
+def test_http(url: str, timeout: float = 5.0) -> dict:
     """
-    Checks HTTP/HTTPS status for the given domain/IP.
-    Returns status code, response time, and success.
+    Simple HTTP(S) GET. Returns status, headers summary.
     """
-    urls = [f"http://{target}", f"https://{target}"]
-    results = []
-
-    for url in urls:
-        try:
-            start = time.time()
-            response = requests.get(url, timeout=5)
-            elapsed = round((time.time() - start) * 1000, 2)  # in ms
-            success = response.status_code < 400
-
-            results.append({
-                "url": url,
-                "status_code": response.status_code,
-                "response_time_ms": elapsed,
-                "success": success
-            })
-        except requests.exceptions.RequestException as e:
-            results.append({
-                "url": url,
-                "status_code": None,
-                "response_time_ms": None,
-                "success": False,
-                "error": str(e)
-            })
-
-    overall_success = any(r["success"] for r in results)
-
-    return {
-        "test": "HTTP/HTTPS Check",
-        "target": target,
-        "success": overall_success,
-        "results": results
-    }
-
+    start = time.time()
+    try:
+        resp = requests.get(url, timeout=timeout)
+        headers = {k: resp.headers.get(k) for k in ("content-type", "server", "content-length")}
+        return {
+            "test": "web_services.http",
+            "target": url,
+            "success": True,
+            "output": {"status_code": resp.status_code, "headers": headers},
+            "error": None,
+            "duration": time.time() - start,
+            "timestamp": datetime.utcnow().isoformat() + "Z"
+        }
+    except Exception as e:
+        return {
+            "test": "web_services.http",
+            "target": url,
+            "success": False,
+            "output": None,
+            "error": str(e),
+            "duration": time.time() - start,
+            "timestamp": datetime.utcnow().isoformat() + "Z"
+        }
