@@ -1,19 +1,19 @@
 from flask import Flask, render_template, request
-from NetToolbox.cloud.cicdtest import test_cicd
-from NetToolbox.cloud.kubernetestest import test_kubernetes
-from NetToolbox.cloud.s3test import test_s3
-from NetToolbox.connectivity.pingtest import test_ping
-from NetToolbox.connectivity.tcpudppingtest import test_tcp_udp_ping
-from NetToolbox.connectivity.traceroutetest import test_traceroute
-from NetToolbox.dns.cnametest import test_cname
-from NetToolbox.dns.dnslookuptest import test_dns_lookup
-from NetToolbox.dns.mmxtest import test_mx
-from NetToolbox.security.firewalltest import test_firewall
-from NetToolbox.security.portscantest import test_port_scan
-from NetToolbox.security.weakcyphertest import test_weak_cipher
-from NetToolbox.webservices.apitest import test_api
-from NetToolbox.webservices.httptest import test_http
-from NetToolbox.webservices.ssltest import test_ssl
+from nettoolbox.cloud_devops.cicd_test import test_cicd
+from nettoolbox.cloud_devops.kubernetes_test import test_kubernetes
+from nettoolbox.cloud_devops.s3_test import test_s3
+from nettoolbox.connectivity.ping_test import test_ping
+from nettoolbox.connectivity.tcp_udp_ping_test import tcp_udp_ping_test
+from nettoolbox.connectivity.traceroute_test import test_traceroute
+from nettoolbox.dns.cname_test import test_cname
+from nettoolbox.dns.dns_lookup_test import test_dns_lookup
+from nettoolbox.dns.mx_test import test_mx
+from nettoolbox.security.firewall_test import test_firewall
+from nettoolbox.security.port_scan_test import test_port_scan
+from nettoolbox.security.weak_cipher_test import test_weak_cipher
+from nettoolbox.web_services.api_test import test_api
+from nettoolbox.web_services.http_test import test_http
+from nettoolbox.web_services.ssl_test import test_ssl
 
 app = Flask(__name__)
 
