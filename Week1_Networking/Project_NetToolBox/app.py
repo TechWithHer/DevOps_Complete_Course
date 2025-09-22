@@ -3,7 +3,6 @@ from nettoolbox.cloud_devops.cicd_test import test_cicd
 from nettoolbox.cloud_devops.kubernetes_test import test_kubernetes
 from nettoolbox.cloud_devops.s3_test import test_s3
 from nettoolbox.connectivity.ping_test import test_ping
-from nettoolbox.connectivity.tcp_udp_ping_test import tcp_udp_ping_test
 from nettoolbox.connectivity.traceroute_test import test_traceroute
 from nettoolbox.dns.cname_test import test_cname
 from nettoolbox.dns.dns_lookup_test import test_dns_lookup
@@ -33,8 +32,6 @@ def index():
             result = test_s3(target)
         elif category == "ping":
             result = test_ping(target)
-        elif category == "tcp_udp":
-            result = test_tcp_udp_ping(target)
         elif category == "traceroute":
             result = test_traceroute(target)
         elif category == "cname":
