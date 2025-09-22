@@ -9,44 +9,43 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    result = None
+    tests = None
     if request.method == "POST":
         category = request.form.get("category")
         target = request.form.get("target")
 
         if category == "cloud":
-            result = [
+            tests = [
                 cicd_test.test_cicd(target),
                 kubernetes_test.test_kubernetes(target),
                 s3_test.test_s3(target),
             ]
         elif category == "connectivity":
-            result = [
+            tests = [
                 ping_test.test_ping(target),
                 tcp_udp_ping_test.test_tcp_udp_ping(target),
                 traceroute_test.test_traceroute(target),
             ]
         elif category == "dns":
-            result = [
+            tests = [
                 cname_test.test_cname(target),
                 dns_lookup_test.test_dns_lookup(target),
                 mx_test.test_mx(target),
             ]
         elif category == "security":
-            result = [
+            tests = [
                 firewall_test.test_firewall(target),
                 port_scan_test.test_port_scan(target),
                 weak_cipher_test.test_weak_cipher(target),
             ]
         elif category == "web":
-            result = [
+            tests = [
                 api_test.test_api(target),
                 http_test.test_http(target),
                 ssl_test.test_ssl(target),
             ]
 
-    return render_template("index.html", result=result)
+    return render_template("index.html", tests=tests)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
-
