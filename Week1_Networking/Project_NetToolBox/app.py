@@ -1,3 +1,13 @@
+from flask import Flask, render_template, request
+from nettoolbox.cloud_devops import cicd_test, kubernetes_test, s3_test
+from nettoolbox.connectivity import ping_test, tcp_udp_ping_test, traceroute_test
+from nettoolbox.dns import cname_test, dns_lookup_test, mx_test
+from nettoolbox.security import firewall_test, port_scan_test, weak_cipher_test
+from nettoolbox.web_services import api_test, http_test, ssl_test
+
+# ✅ Define Flask app before using it
+app = Flask(__name__)
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     tests = {}  # initialize as empty dict
@@ -37,3 +47,8 @@ def index():
             }
 
     return render_template("index.html", tests=tests)
+
+# ✅ Add this so Flask actually runs when you execute app.py
+if __name__ == "__main__":
+    # host="0.0.0.0" makes it accessible outside EC2 on port 5000
+    app.run(host="0.0.0.0", port=5000, debug=True)
