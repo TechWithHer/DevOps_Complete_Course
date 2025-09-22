@@ -24,7 +24,8 @@ def main():
     elif choice == "2":
         target = input("Enter host/IP: ")
         print(ping_test.test_ping(target))
-        print(tcp_udp_ping_test.test_tcp_udp_ping(target))
+        print(tcp_udp_ping_test.test_tcp_ping(target))
+        print(tcp_udp_ping_test.test_udp_ping(target))
         print(traceroute_test.test_traceroute(target))
 
     elif choice == "3":
