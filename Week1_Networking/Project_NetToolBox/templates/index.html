@@ -2,71 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>NetToolBox Web</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+    <title>NetToolbox</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>NetToolBox</h1>
+        <h1>⚡ NetToolbox</h1>
+        <form method="POST">
+            <input type="text" name="target" placeholder="Enter IP or Domain" required>
 
-        <!-- Input for target -->
-        <input type="text" id="target" placeholder="Enter Domain / IP / URL" />
+            <div class="buttons">
+                <button type="submit" name="category" value="cicd">CI/CD Test</button>
+                <button type="submit" name="category" value="k8s">Kubernetes Test</button>
+                <button type="submit" name="category" value="s3">S3 Test</button>
+                <button type="submit" name="category" value="ping">Ping</button>
+                <button type="submit" name="category" value="tcp_udp">TCP/UDP</button>
+                <button type="submit" name="category" value="traceroute">Traceroute</button>
+                <button type="submit" name="category" value="cname">CNAME</button>
+                <button type="submit" name="category" value="dns">DNS Lookup</button>
+                <button type="submit" name="category" value="mx">MX Lookup</button>
+                <button type="submit" name="category" value="firewall">Firewall</button>
+                <button type="submit" name="category" value="port_scan">Port Scan</button>
+                <button type="submit" name="category" value="weak_cipher">Weak Cipher</button>
+                <button type="submit" name="category" value="api">API Test</button>
+                <button type="submit" name="category" value="http">HTTP Test</button>
+                <button type="submit" name="category" value="ssl">SSL Test</button>
+            </div>
+        </form>
 
-        <!-- Test Buttons -->
-        <div class="buttons">
-            <h2>Cloud & DevOps</h2>
-            <button onclick="runTest('cicd')">CI/CD Test</button>
-            <button onclick="runTest('kubernetes')">Kubernetes Test</button>
-            <button onclick="runTest('s3')">S3 Test</button>
-
-            <h2>Connectivity</h2>
-            <button onclick="runTest('ping')">Ping</button>
-            <button onclick="runTest('tcp_udp_ping')">TCP/UDP Ping</button>
-            <button onclick="runTest('traceroute')">Traceroute</button>
-
-            <h2>DNS</h2>
-            <button onclick="runTest('cname')">CNAME Lookup</button>
-            <button onclick="runTest('dns_lookup')">DNS Lookup</button>
-            <button onclick="runTest('mx')">MX Records</button>
-
-            <h2>Security</h2>
-            <button onclick="runTest('firewall')">Firewall Test</button>
-            <button onclick="runTest('port_scan')">Port Scan</button>
-            <button onclick="runTest('weak_cipher')">Weak Cipher Test</button>
-
-            <h2>Web Services</h2>
-            <button onclick="runTest('api')">API Test</button>
-            <button onclick="runTest('http')">HTTP Test</button>
-            <button onclick="runTest('ssl')">SSL Check</button>
-        </div>
-
-        <!-- Result Display -->
-        <div id="result"></div>
+        {% if result %}
+            <div class="result {{ status }}">
+                <h2>Result:</h2>
+                <p>{{ result }}</p>
+            </div>
+        {% endif %}
     </div>
-
-    <script>
-        async function runTest(testName) {
-            const target = document.getElementById("target").value;
-            if (!target) {
-                alert("Please enter a domain/IP/URL first!");
-                return;
-            }
-
-            const response = await fetch("/run_test", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ test: testName, target: target })
-            });
-
-            const data = await response.json();
-            const resultDiv = document.getElementById("result");
-
-            if (data.result) {
-                resultDiv.innerHTML = `<p><strong>${testName}:</strong> ${data.result}</p>`;
-            } else {
-                resultDiv.innerHTML = `<p style="color:red;"><strong>Error:</strong> ${data.error}</p>`;
-            }
-        }
-    </script>
 </body>
 </html>
