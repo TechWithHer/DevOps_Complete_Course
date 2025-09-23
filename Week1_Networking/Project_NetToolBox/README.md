@@ -1,92 +1,191 @@
-NetToolbox 🛠️
+# 🛠️ NetToolbox
 
-A lightweight Python toolkit for network troubleshooting and learning.
+NetToolbox is a **network and cloud testing toolkit** built with Python.
+It provides both a **Command-Line Interface (CLI)** and a **Web Dashboard** to perform essential DevOps, networking, DNS, security, and web service checks.
 
-📌 Overview
+Designed with **professional UI** (dark metallic + neon theme ✨), it helps engineers test infrastructure quickly and visually.
 
-NetToolbox is a command-line toolkit built in Python to help troubleshoot and understand networks.
-It is designed for learners, DevOps engineers, and system admins who want to quickly test connectivity, resolve network issues, and explore how different protocols work — all from a single interactive tool.
+---
 
-✨ Features
+## 📂 Project Structure
 
-🔍 Ping Test – Verify connectivity to a host.
+```
+NetToolbox/
+├── app.py                 # Web interface (Flask app)
+├── main.py                # CLI interface
+├── requirements.txt       # Dependencies (reference only)
+├── templates/
+│   └── index.html         # Web dashboard
+├── static/
+│   └── style.css          # Styling for the dashboard
+├── nettoolbox/            # Core package
+│   ├── cloud_devops/
+│   │   ├── cicd_test.py
+│   │   ├── kubernetes_test.py
+│   │   └── s3_test.py
+│   ├── connectivity/
+│   │   ├── ping_test.py
+│   │   └── traceroute_test.py
+│   ├── dns/
+│   │   ├── cname_test.py
+│   │   ├── dns_lookup_test.py
+│   │   └── mx_test.py
+│   ├── security/
+│   │   ├── firewall_test.py
+│   │   ├── port_scan_test.py
+│   │   └── weak_cipher_test.py
+│   └── web_services/
+│       ├── api_test.py
+│       ├── http_test.py
+│       └── ssl_test.py
+```
 
-🌐 DNS Lookup – Resolve domain names to IP addresses.
+---
 
-📡 Port Scanner – Check open ports on a host.
+## 🚀 Features
 
-🛰️ IP Info – Get your public IP and local network info.
+* **Cloud/DevOps Tests**
 
-📜 Traceroute (optional) – Trace the route packets take (can be extended).
+  * CI/CD connectivity check
+  * Kubernetes test
+  * AWS S3 test
 
-📖 Educational Mode – Understand how these commands map to OSI/TCP layers.
+* **Connectivity Tests**
 
-🛠️ Installation
-1. Clone the repository
-git clone https://github.com/your-username/NetToolbox.git
-cd NetToolbox
+  * Ping test
+  * Traceroute test
 
-2. Create a virtual environment
-python3 -m venv venv
-source venv/bin/activate   # Mac/Linux
-venv\Scripts\activate      # Windows
+* **DNS Tests**
 
-3. Install dependencies
-pip install -r requirements.txt
+  * CNAME lookup
+  * DNS record lookup
+  * MX record check
 
-🚀 Usage
+* **Security Tests**
 
-Run the tool with:
+  * Firewall reachability
+  * Port scan
+  * Weak cipher check
 
-python main.py
+* **Web Services Tests**
 
+  * API test
+  * HTTP response check
+  * SSL certificate validation
 
-You’ll see an interactive menu like:
+---
 
-1. Ping a host
-2. DNS lookup
-3. Port scan
-4. Get IP info
-5. Exit
+## ⚡ Installation
 
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/yourusername/NetToolbox.git
+   cd NetToolbox
+   ```
+
+2. Create a virtual environment:
+
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+---
+
+## 🖥️ Usage
+
+### 1. Run as Web App (Flask)
+
+Start the Flask app:
+
+```bash
+python app.py
+```
+
+By default it runs at:
+
+```
+http://127.0.0.1:5000
+```
+
+If running on EC2, make it public:
+
+```python
+app.run(debug=True, host="0.0.0.0", port=5000)
+```
+
+#### 🌐 Web Dashboard
+
+* Enter a **domain/IP** in the input field.
+* Click on any **test button**.
+* Results will show in **green** (PASS) or **red** (FAIL).
+
+---
+
+### 2. Run as CLI
+
+Use `main.py` for terminal-based testing:
+
+```bash
+python main.py --category dns --test cname --target example.com
+```
 
 Example:
 
-Enter choice: 1
-Enter host: google.com
-Pinging google.com...
-Reply from 142.250.72.14: time=20ms
+```bash
+python main.py --category connectivity --test ping --target 8.8.8.8
+```
 
-📂 Project Structure
-NetToolbox/
-│── nettoolbox/        # Core Python package
-│   ├── ping.py        # Ping functionality
-│   ├── dns_lookup.py  # DNS resolution
-│   ├── port_scan.py   # Port scanner
-│   ├── ip_info.py     # Get IP info
-│   └── __init__.py
-│
-│── main.py            # Entry point script
-│── requirements.txt   # Dependencies
-│── README.md          # Documentation
+---
 
-🧭 Roadmap
+## 📋 Requirements
 
- Add traceroute functionality
+Example `requirements.txt` (for reference only):
 
- Add monitoring alerts (email/Telegram)
+```
+Flask
+requests
+dnspython
+python-nmap
+cryptography
+```
 
- Build simple web dashboard for results
+---
 
- Package as a PyPI module
+## 🎨 UI Preview
 
-🤝 Contributing
+* **Dark metallic background** with **neon glow buttons**
+* Results:
 
-Contributions, issues, and feature requests are welcome!
-Feel free to open an issue
- or submit a PR.
+  * ✅ Green → PASS / secure / reachable
+  * ❌ Red → FAIL / insecure / unreachable
 
-📜 License
+---
 
-This project is licensed under the MIT License – see the LICENSE
- file for details.
+## 🛡️ Security Note
+
+This tool is for **educational and testing purposes only**.
+Do not use it against systems you do not own or have permission to test.
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! Please fork the repo and submit PRs with improvements.
+
+---
+
+## 📜 License
+
+MIT License © 2025 Your Name
+
+---
+
+👉 Question: do you want me to also include **screenshots / demo GIFs** of the web dashboard inside the README (so it looks more professional on GitHub)?
