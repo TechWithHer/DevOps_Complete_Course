@@ -20,47 +20,51 @@ app = Flask(__name__)
 def index():
     result = None
     status = None
+    message = None
+
     if request.method == "POST":
         category = request.form.get("category")
         target = request.form.get("target")
 
-        if category == "cicd":
-            result = test_cicd(target)
-        elif category == "k8s":
-            result = test_kubernetes(target)
-        elif category == "s3":
-            result = test_s3(target)
-        elif category == "ping":
-            result = test_ping(target)
-        elif category == "traceroute":
-            result = test_traceroute(target)
-        elif category == "cname":
-            result = test_cname(target)
-        elif category == "dns":
-            result = test_dns_lookup(target)
-        elif category == "mx":
-            result = test_mx(target)
-        elif category == "firewall":
-            result = test_firewall(target)
-        elif category == "port_scan":
-            result = test_port_scan(target)
-        elif category == "weak_cipher":
-            result = test_weak_cipher(target)
-        elif category == "api":
-            result = test_api(target)
-        elif category == "http":
-            result = test_http(target)
-        elif category == "ssl":
-            result = test_ssl(target)
+        # Map category to corresponding test function
+        test_functions = {
+            "cicd": test_cicd,
+            "k8s": test_kubernetes,
+            "s3": test_s3,
+            "ping": test_ping,
+            "traceroute": test_traceroute,
+            "cname": test_cname,
+            "dns": test_dns_lookup,
+            "mx": test_mx,
+            "firewall": test_firewall,
+            "port_scan": test_port_scan,
+            "weak_cipher": test_weak_cipher,
+            "api": test_api,
+            "http": test_http,
+            "ssl": test_ssl,
+        }
 
-        # Assume each test returns a string like "PASS: ..." or "FAIL: ..."
-        if result.startswith("PASS"):
-            status = "good"
-        else:
-            status = "bad"
+        test_func = test_functions.get(category)
+        if test_func:
+            result = test_func(target)
 
-    return render_template("index.html", result=result, status=status)
+            # Determine status based on 'success' key if present
+            if isinstance(result, dict):
+                success = result.get("success", False)
+                status = "good" if success else "bad"
+
+                # Create a user-friendly message
+                if success:
+                    message = f"PASS: {result.get('target', 'Target')} test succeeded."
+                else:
+                    error = result.get("error", "Unknown error")
+                    message = f"FAIL: {result.get('target', 'Target')} test failed. Error: {error}"
+            else:
+                # fallback if test_func returns a string
+                status = "good" if str(result).startswith("PASS") else "bad"
+                message = str(result)
+
+    return render_template("index.html", result=result, status=status, message=message)
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)
-
