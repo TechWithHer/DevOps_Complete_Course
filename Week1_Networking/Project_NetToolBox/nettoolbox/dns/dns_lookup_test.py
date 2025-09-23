@@ -13,3 +13,4 @@ def test_dns_lookup(domain: str) -> dict:
     result["duration"] = time.time() - start
     result["timestamp"] = datetime.utcnow().isoformat() + "Z"
     return result
+

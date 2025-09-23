@@ -14,3 +14,4 @@ def test_cname(domain: str, timeout: float = 3.0) -> dict:
     result["duration"] = time.time() - start
     result["timestamp"] = datetime.utcnow().isoformat() + "Z"
     return result
+

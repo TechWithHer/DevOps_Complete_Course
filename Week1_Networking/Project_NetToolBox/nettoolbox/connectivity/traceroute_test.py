@@ -25,3 +25,4 @@ def test_traceroute(host: str, max_hops: int = 20, timeout: float = 10.0) -> dic
     result["duration"] = time.time() - start
     result["timestamp"] = datetime.utcnow().isoformat() + "Z"
     return result
+

@@ -14,3 +14,5 @@ def test_mx(domain: str, timeout: float = 3.0) -> dict:
     result["duration"] = time.time() - start
     result["timestamp"] = datetime.utcnow().isoformat() + "Z"
     return result
+
+print(test_mx("ayushisingh.com"))
