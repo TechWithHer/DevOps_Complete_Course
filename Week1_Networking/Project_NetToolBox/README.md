@@ -158,6 +158,15 @@ cryptography
 ```
 
 ---
+## About Requirements
+
+Flask → UI/web framework.
+requests → HTTP checks.
+dnspython → DNS checks.
+python-nmap → Port scans.
+cryptography → SSL/cipher strength analysis.
+
+---
 
 ## 🎨 UI Preview
 
@@ -184,8 +193,7 @@ Pull requests are welcome! Please fork the repo and submit PRs with improvements
 
 ## 📜 License
 
-MIT License © 2025 Your Name
+MIT License © 2025 Ayushi Singh
 
 ---
-
-👉 Question: do you want me to also include **screenshots / demo GIFs** of the web dashboard inside the README (so it looks more professional on GitHub)?
+<img width="904" height="621" alt="Screenshot 2025-09-23 at 10 02 08 AM" src="https://github.com/user-attachments/assets/cfad5656-dbc6-4ecd-a6b9-931681afa3be" />
