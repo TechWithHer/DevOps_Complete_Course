@@ -81,7 +81,7 @@ NetToolbox/
 
    ```bash
    git clone https://github.com/TechWithHer/DevOps_Complete_Course/tree/main/Week1_Networking/Project_NetToolBox
-   cd NetToolbox
+   cd Project_NetToolBox
    ```
 
 2. Create a virtual environment:
