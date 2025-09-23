@@ -7,35 +7,150 @@
 </head>
 <body>
     <div class="container">
-        <h1>⚡ NetToolbox</h1>
+        <!-- Header / Hero -->
+        <header>
+            <h1>⚡ NetToolbox</h1>
+            <p>
+                NetToolbox — quick diagnostics and checks for DevOps & Network engineers.
+                Run cloud checks, connectivity probes, DNS validations, security scans and web-service tests from one place.
+            </p>
+        </header>
+
+        <!-- Input -->
         <form method="POST">
             <input type="text" name="target" placeholder="Enter IP or Domain" required>
 
-            <div class="buttons">
-                <button type="submit" name="category" value="cicd">CI/CD Test</button>
-                <button type="submit" name="category" value="k8s">Kubernetes Test</button>
-                <button type="submit" name="category" value="s3">S3 Test</button>
-                <button type="submit" name="category" value="ping">Ping</button>
-                <button type="submit" name="category" value="tcp_udp">TCP/UDP</button>
-                <button type="submit" name="category" value="traceroute">Traceroute</button>
-                <button type="submit" name="category" value="cname">CNAME</button>
-                <button type="submit" name="category" value="dns">DNS Lookup</button>
-                <button type="submit" name="category" value="mx">MX Lookup</button>
-                <button type="submit" name="category" value="firewall">Firewall</button>
-                <button type="submit" name="category" value="port_scan">Port Scan</button>
-                <button type="submit" name="category" value="weak_cipher">Weak Cipher</button>
-                <button type="submit" name="category" value="api">API Test</button>
-                <button type="submit" name="category" value="http">HTTP Test</button>
-                <button type="submit" name="category" value="ssl">SSL Test</button>
-            </div>
+            <!-- Cloud Testing -->
+            <section class="category cloud">
+                <h2>Cloud Testing</h2>
+                <div class="buttons">
+                    <div class="tool">
+                        <button type="submit" name="category" value="cicd">CI/CD Test</button>
+                        <div class="file-name">cicd_test.py</div>
+                    </div>
+
+                    <div class="tool">
+                        <button type="submit" name="category" value="k8s">Kubernetes Test</button>
+                        <div class="file-name">k8s_test.py</div>
+                    </div>
+
+                    <div class="tool">
+                        <button type="submit" name="category" value="s3">S3 Test</button>
+                        <div class="file-name">s3_test.py</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Connectivity Testing -->
+            <section class="category connectivity">
+                <h2>Connectivity Testing</h2>
+                <div class="buttons">
+                    <div class="tool">
+                        <button type="submit" name="category" value="ping">Ping</button>
+                        <div class="file-name">ping.py</div>
+                    </div>
+
+                    <div class="tool">
+                        <button type="submit" name="category" value="tcp_udp">TCP / UDP Test</button>
+                        <div class="file-name">tcp_udp_test.py</div>
+                    </div>
+
+                    <div class="tool">
+                        <button type="submit" name="category" value="traceroute">Traceroute</button>
+                        <div class="file-name">traceroute.py</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DNS Testing -->
+            <section class="category dns">
+                <h2>DNS Testing</h2>
+                <div class="buttons">
+                    <div class="tool">
+                        <button type="submit" name="category" value="dns">DNS Lookup</button>
+                        <div class="file-name">dns_lookup.py</div>
+                    </div>
+
+                    <div class="tool">
+                        <button type="submit" name="category" value="cname">CNAME Lookup</button>
+                        <div class="file-name">cname_lookup.py</div>
+                    </div>
+
+                    <div class="tool">
+                        <button type="submit" name="category" value="mx">MX Lookup</button>
+                        <div class="file-name">mx_lookup.py</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Security Testing -->
+            <section class="category security">
+                <h2>Security Testing</h2>
+                <div class="buttons">
+                    <div class="tool">
+                        <button type="submit" name="category" value="firewall">Firewall Check</button>
+                        <div class="file-name">firewall_check.py</div>
+                    </div>
+
+                    <div class="tool">
+                        <button type="submit" name="category" value="port_scan">Port Scan</button>
+                        <div class="file-name">port_scan.py</div>
+                    </div>
+
+                    <div class="tool">
+                        <button type="submit" name="category" value="weak_cipher">Weak Cipher</button>
+                        <div class="file-name">weak_cipher_check.py</div>
+                    </div>
+
+                    <div class="tool">
+                        <button type="submit" name="category" value="ssl">SSL Test</button>
+                        <div class="file-name">ssl_test.py</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Web Services Testing -->
+            <section class="category webservices">
+                <h2>Web Services Testing</h2>
+                <div class="buttons">
+                    <div class="tool">
+                        <button type="submit" name="category" value="api">API Test</button>
+                        <div class="file-name">api_test.py</div>
+                    </div>
+
+                    <div class="tool">
+                        <button type="submit" name="category" value="http">HTTP Test</button>
+                        <div class="file-name">http_test.py</div>
+                    </div>
+                </div>
+            </section>
         </form>
 
+        <!-- Results -->
         {% if result %}
             <div class="result {{ status }}">
                 <h2>Result:</h2>
                 <p>{{ result }}</p>
             </div>
         {% endif %}
+
+        <!-- Terms & Conditions -->
+        <section class="terms">
+            <h3>Terms & Conditions</h3>
+            <p>
+                NetToolbox is provided for troubleshooting and educational use only.
+                Do not use it to scan, probe, or attack systems without explicit permission.
+                You are responsible for ensuring you have authorization before running any test.
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>
+                For more info or to contribute, visit the
+                <a href="https://github.com/yourusername/NetToolbox" target="_blank" rel="noopener">GitHub repository</a>.
+            </p>
+        </footer>
     </div>
 </body>
 </html>
