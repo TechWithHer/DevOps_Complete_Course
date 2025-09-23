@@ -37,3 +37,7 @@ def test_kubernetes(api_server: str, port: int = 6443, timeout: float = 3.0) -> 
     result["duration"] = time.time() - start
     result["timestamp"] = datetime.utcnow().isoformat() + "Z"
     return result
+
+if __name__ == "__main__":
+    target = input("Enter target (IP or domain): ")
+    print(test_kubernetes(target))

@@ -38,3 +38,7 @@ def test_s3(bucket_name: str = None, timeout: float = 5.0) -> dict:
         out.update({"success": False, "error": str(e), "duration": time.time() - start})
 
     return out
+
+if __name__ == "__main__":
+    target = input("Enter target (IP or domain): ")
+    print(test_s3(target))

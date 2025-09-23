@@ -29,7 +29,7 @@ def test_cicd(target: str, timeout: float = 3.0) -> dict:
         success = False
         output = None
         error = str(e)
-
+    
     return {
         "test": "cloud_devops.cicd",
         "target": target,
@@ -39,3 +39,7 @@ def test_cicd(target: str, timeout: float = 3.0) -> dict:
         "duration": time.time() - start,
         "timestamp": datetime.utcnow().isoformat() + "Z"
     }
+
+if __name__ == "__main__":
+    target = input("Enter target (IP or domain): ")
+    print(test_cicd(target))
