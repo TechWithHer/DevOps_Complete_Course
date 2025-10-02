@@ -3,6 +3,22 @@
 Hey Everyone, Glad you stopped by. The reason I created this repo is to structure all what I studied while pursuing DevOps. 
 My notes will help you study all what is required. Also there are some other repos which are going to give you handsOn.
 
+# Important Links
+
+1. Connect with me on LinkedIn for updates
+2. Subscribe to the Youtube Channel for HandsOn Project
+3. Notion Link for Theory
+4. My Personal Website  - To Know more about me.
+5. My Social Media Platforms: Instagram, Threads, Tiktok
+6. Email Me 
+
+# Projects You Can Try
+
+1. Project 1 <Coming Soon>
+2. Project 2 <Coming Soon>
+3. Project 3 <Coming Soon> 
+
+
 # 🚀 My 100-Days DevOps Journey
 
 I’ve set myself on a **100-days journey** to master and share DevOps in a structured, hands-on way.
