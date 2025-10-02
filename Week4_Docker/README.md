@@ -21,10 +21,15 @@
 ## 📂 Repository Structure  
 
 ── Notes/ # Reference notes or guides
+
 ├── Tasks.md # Practice tasks & challenges
+
 ├── Solutions.md # Suggested solutions
+
 ├── Docker/ # Example Dockerfiles & projects
+
 ├── Scripts/ # Useful automation scripts
+
 └── README.md # This file
 
 
