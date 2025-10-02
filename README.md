@@ -1,13 +1,6 @@
-# 👩‍💻 About Me
+# Lets learn DevOps Together !
 
-Hi, I’m **Ayushi Singh** – a **DevOps Engineer** and **Keynote Tech Speaker**.
-
-I started my career as a **Project Manager** with a strong tech background, and over time, I transitioned fully into **Cloud, AI, and DevOps**. Alongside my technical work, I regularly speak at industry events on **Digital Transformation, Cloud, AI, and DevOps**, helping businesses and individuals understand how technology is reshaping the world.
-
-I’m passionate about **building real-world projects**, sharing knowledge, and making tech simple and practical.  
-I’m also **open to collaborations and project partnerships** – so feel free to connect!
-
----
+Hey Everyone, Glad you stopped by. 
 
 # 🚀 My 100-Days DevOps Journey
 
