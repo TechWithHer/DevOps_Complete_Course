@@ -1,6 +1,6 @@
 # Lets learn DevOps Together !
 
-Hey Everyone, Glad you stopped by. 
+Hey Everyone, Glad you stopped by. The reason I created this repo is to structure all what I studied while pursuing DevOps. My notes will help you study all what is required. 
 
 # 🚀 My 100-Days DevOps Journey
 
