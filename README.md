@@ -33,26 +33,7 @@ I’ve set myself on a **100-days journey** to master and share DevOps in a stru
 
 ## 📌 Roadmap
 
-Here’s how I’m breaking it down over 100 days:
-
-### Phase 1 – Foundations
-- Networking for DevOps  
-- Linux for DevOps  
-- Git & GitHub  
-
-### Phase 2 – Core Tools
-- Docker  
-- Jenkins & CI/CD  
-- Kubernetes  
-
-### Phase 3 – Automation & Cloud
-- Ansible  
-- Monitoring in DevOps  
-- Terraform  
-- AWS & Cloud Basics  
-
-👉 After this, I’ll move into **real-world projects**, integrating all tools and practices together.
-
+Intro
 ---
 
 ## 🛠️ How I’m Documenting This Journey
