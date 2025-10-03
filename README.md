@@ -1,17 +1,19 @@
 # 🚀 Let's Learn DevOps Together!  
 
+### Commitment: 4-6 Hours Every Day for Next 100 Days.
+
 Hey Everyone 👋, glad you stopped by!  
 
-I created this repo to **structure everything I studied while pursuing DevOps**.  
+I created this repo to **structure everything I studied while learning DevOps**.  
 My notes will help you study all that’s required, and I’ll also share other repos where you can get **hands-on practice**.  
 
 ---
 
 ## 🔗 Important Links  
 
-- 💼 [Connect with me on LinkedIn](YOUR_LINKEDIN_URL) for updates  
-- 🎥 [Subscribe on YouTube](YOUR_YOUTUBE_URL) for Hands-On Projects  
-- 📒 [Notion Notes](YOUR_NOTION_URL) for theory & structured learning  
+- 💼 Important: [Connect with me on LinkedIn](YOUR_LINKEDIN_URL) for updates  
+- 🎥 Important: [Subscribe on YouTube](YOUR_YOUTUBE_URL) for Hands-On Projects  
+- 📒 Important: [Notion Notes](YOUR_NOTION_URL) for theory & structured learning  
 - 🌐 [My Website](YOUR_WEBSITE_URL) – Know more about me  
 - 📲 My Socials: [Instagram](YOUR_IG_URL) | [Threads](YOUR_THREADS_URL) | [TikTok](YOUR_TIKTOK_URL)  
 - ✉️ [Email Me](mailto:YOUR_EMAIL@domain.com)  
@@ -20,7 +22,7 @@ My notes will help you study all that’s required, and I’ll also share other 
 
 ## 🛠️ Projects You Can Try  
 
-1. **Project 1** – *Coming Soon*  
+1. **Project 1** – NetToolBox *Coming Soon*  
 2. **Project 2** – *Coming Soon*  
 3. **Project 3** – *Coming Soon*  
 
@@ -28,12 +30,13 @@ My notes will help you study all that’s required, and I’ll also share other 
 
 # 📅 My 100-Days DevOps Journey  
 
-I’ve set myself on a **100-days journey** to master and share DevOps in a structured, hands-on way.  
+Promise to Yourself: I’ve set myself on a **100-days journey** to master DevOps in a structured, hands-on way.  
 
 ### 📌 My Approach  
 1. ✅ **Checklist of Essentials** – covering only what every DevOps engineer *must know*.  
 2. 🖥️ **Hands-on Projects** – real-world use cases (3 projects will be uploaded, links will be shared soon).  
-3. 🌍 **Sharing Everywhere** – so others can follow and learn with me.  
+3. 🌍 **Sharing Everywhere** – so others can follow and learn with me.
+4. Other Helpful Resources are also listed below. 
 
 ---
 
